@@ -1,0 +1,35 @@
+version: '3.6'
+services:
+  caller:
+    container_name: caller
+    build:
+      context: ./caller
+      dockerfile: Dockerfile
+    depends_on:
+      - ganache
+    ports:
+      - "8888:8888"
+    tty: true
+    volumes:
+      - ../app:/srv/:cached
+  oracle:
+    container_name: oracle
+    build:
+      context: ./oracle
+      dockerfile: Dockerfile
+    depends_on:
+      - ganache
+    ports:
+      - "1111:1111"
+    tty: true
+    volumes:
+      - ../app:/srv/:cached
+  ganache:
+    container_name: ganache
+    build:
+      context: ./ganache
+      dockerfile: Dockerfile
+    ports:
+       - "8545:8545"
+    stdin_open: true
+    tty: true
