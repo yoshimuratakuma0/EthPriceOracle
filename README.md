@@ -3,10 +3,8 @@ docker-compose build
 ```
 
 ```
-docker-compose up
+docker-compose up -d
 ```
-
-Ganache が立ち上がるまで数十秒待ってから
 
 ```
 docker-compose run oracle truffle migrate
